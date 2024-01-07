@@ -2,13 +2,13 @@
 
 int main(){
 	//load
-	WordCounter wc;
+	WordCounter wc(true, true);
 	wc.loadText("./bible.txt");
 	//search
 	std::vector<std::string> searchList;
 	std::vector<unsigned int> resultList;
-	searchList.push_back("lord");
-	searchList.push_back("god");
+	searchList.push_back("Lord");
+	searchList.push_back("God");
 	resultList = wc.countWords(searchList);
 	//print
 	for (unsigned int i = 0; i < resultList.size(); i++) {

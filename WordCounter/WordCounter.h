@@ -17,13 +17,18 @@ class WordCounter {
 public:
 	bool loadText(const std::string& path);
 	std::vector<unsigned int> countWords(const std::vector<std::string>& searchlist);
-	void setConvertFunction(std::string(*func) (const std::string&));
+	void setConvertFunction(std::string(*func) (const std::string&, const bool));
+	void setCaseSensitive(const bool mode);
+	void setAllowPartialMatch(const bool mode);
 	//Constructors
 	WordCounter();
-	WordCounter(std::string(*func) (const std::string&));
+	WordCounter(const bool initCaseSensitive, const bool initAllowPartialMatch);
+	WordCounter(std::string(*func) (const std::string&, const bool), const bool initCaseSensitive, const bool initAllowPartialMatch);
 private:
+	bool caseSensitive;
+	bool allowPartialMatch;
 	std::string textOriginal;
 	std::string textStripped;
 	//function pointer to convert function
-	std::string(*convert) (const std::string&);
+	std::string(*convert) (const std::string&, const bool);
 };
